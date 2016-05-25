@@ -26,9 +26,9 @@
             <div class="caption">
                 <h3>Register!</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <!--<p>
-                    <a v-link="'/home'" class="btn btn-primary">Register</a>
-                </p>-->
+                <p>
+                    <a v-link="'/register'" class="btn btn-success">Get started!</a>
+                </p>
             </div>
         </div>
     </div>
@@ -39,9 +39,9 @@
             <div class="caption">
                 <h3>Start your shop</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <!--<p>
-                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                </p>-->
+                <p>
+                    <a v-link="'/register'" class="btn btn-success">Get started!</a>
+                </p>
             </div>
         </div>
     </div>
@@ -52,9 +52,9 @@
             <div class="caption">
                 <h3>Add your products</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <!--<p>
-                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                </p>-->
+                <p>
+                    <a v-link="'/register'" class="btn btn-success">Get started!</a>
+                </p>
             </div>
         </div>
     </div>

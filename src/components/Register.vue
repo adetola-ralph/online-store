@@ -30,5 +30,9 @@
 
 <script>
 export default{
+  methods: {
+    register() {
+    },
+  },
 };
 </script>

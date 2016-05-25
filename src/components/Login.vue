@@ -27,16 +27,6 @@
     },
     methods: {
       login() {
-        firebase.auth()
-        .signInWithEmailAndPassword(this.email_address, this.password)
-        .catch((error) => {
-          // Handle Errors here.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-
-          console.log(errorCode);
-          console.log(errorMessage);
-        });
       },
     },
   };
