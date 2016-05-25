@@ -1,4 +1,6 @@
 <template>
+  <div id="wrapper">
+  <p>{{names}}</p>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -47,6 +49,12 @@
                     <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
-        </dov>
+        </div>
     </footer>
+  </div>
 </template>
+
+<script>
+export default{
+};
+</script>
