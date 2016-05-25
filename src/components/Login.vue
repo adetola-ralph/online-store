@@ -27,12 +27,16 @@
     },
     methods: {
       login() {
-        firebase.auth().signInWithEmailAndPassword(email_address, password).catch(function(error) {
+        firebase.auth()
+        .signInWithEmailAndPassword(this.email_address, this.password)
+        .catch((error) => {
           // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // ...
-          });
+          const errorCode = error.code;
+          const errorMessage = error.message;
+
+          console.log(errorCode);
+          console.log(errorMessage);
+        });
       },
     },
   };

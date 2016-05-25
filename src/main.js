@@ -11,6 +11,7 @@ import VueResource from 'vue-resource';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.use(Firebase);
 
 
 const config = {
