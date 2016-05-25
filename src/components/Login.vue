@@ -19,6 +19,9 @@
 
 <script>
   import firebaseApp from '../firebase';
+  // import VueRouter from '../router/index';
+
+  // const router = VueRouter.router;
 
   export default{
     data() {
@@ -45,6 +48,8 @@
 
         if (user) {
           // User is signed in.
+          // router.go({ path: '/stores' });
+          console.log(user.uid);
         } else {
           // No user is signed in.
         }

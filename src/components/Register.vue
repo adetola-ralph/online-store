@@ -56,6 +56,15 @@ export default{
         console.log(errorMessage);
         console.log(errorCode);
       });
+      const user = firebaseApp.firebaseAuth.currentUser;
+
+      if (user) {
+        // User is signed in.
+        // router.go({ path: '/stores' });
+        console.log(user.uid);
+      } else {
+        // No user is signed in.
+      }
     },
   },
   ready: {
