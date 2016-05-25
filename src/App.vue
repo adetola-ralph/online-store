@@ -5,9 +5,9 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar top-bar"></span>
+                    <span class="icon-bar middle-bar"></span>
+                    <span class="icon-bar bottom-bar"></span>
                 </button>
                 <a class="navbar-brand" v-link="'/home'">Oreofe.me</a>
             </div>
