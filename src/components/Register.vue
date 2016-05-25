@@ -29,9 +29,26 @@
 </template>
 
 <script>
+
+import firebaseApp from '../firebase';
+
 export default{
+  data() {
+    return {
+      email_address: '',
+      password: '',
+      authenticated: false,
+    };
+  },
   methods: {
     register() {
+      firebaseApp.firebaseAuth.createUserWithEmailAndPassword(this.email_address, this.password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        alert(errorCode+" "+errorMessage);
+      });
     },
   },
 };
