@@ -69,7 +69,7 @@ export default{
   },
   computed: {
     fullname() {
-      return `${this.firstname}, ${this.lastname}`;
+      return `${this.firstname} ${this.lastname}`;
     },
   },
 };

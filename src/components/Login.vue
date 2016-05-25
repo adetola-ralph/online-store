@@ -42,19 +42,15 @@
 
           console.log(errorMessage);
           console.log(errorCode);
-        });
-
-        firebaseApp.firebaseAuth.onAuthStateChanged((user) => {
-          if (user) {
-            // router.go({ path: '/stores' });
-            console.log(user.uid);
-          } else {
-            // No user is signed in.
-          }
+        }).then((user) => {
+          console.log(user.uid);
+          this.getUser(user.uid);
         });
       },
-      getUser() {
-
+      getUser(uid) {
+        firebaseApp.firebaseDB.ref(`/users/${uid}`).once('value').then((snapshot) => {
+          console.log(snapshot.val());
+        });
       },
     },
     ready: {
