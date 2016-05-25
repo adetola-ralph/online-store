@@ -45,29 +45,32 @@ export default{
   },
   methods: {
     register() {
-      console.log(this.email_address);
+      // console.log(this.email_address);
+      const payload = { name: this.fullname, email: this.email_address };
       firebaseApp.
       firebaseAuth.
       createUserWithEmailAndPassword(this.email_address, this.password).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-
         console.log(errorMessage);
         console.log(errorCode);
-      });
-      const user = firebaseApp.firebaseAuth.currentUser;
-
-      if (user) {
-        // User is signed in.
-        // router.go({ path: '/stores' });
+      }).then((user) => {
         console.log(user.uid);
-      } else {
-        // No user is signed in.
-      }
+        this.addUser(payload, user.uid);
+      });
+    },
+    addUser(payload, uid) {
+      // console.log(`/users/${uid}`);
+      firebaseApp.firebaseDB.ref(`/users/${uid}`).set(payload);
     },
   },
   ready: {
+  },
+  computed: {
+    fullname() {
+      return `${this.firstname}, ${this.lastname}`;
+    },
   },
 };
 </script>

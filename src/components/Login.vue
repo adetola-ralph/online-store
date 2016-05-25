@@ -44,15 +44,17 @@
           console.log(errorCode);
         });
 
-        const user = firebaseApp.firebaseAuth.currentUser;
+        firebaseApp.firebaseAuth.onAuthStateChanged((user) => {
+          if (user) {
+            // router.go({ path: '/stores' });
+            console.log(user.uid);
+          } else {
+            // No user is signed in.
+          }
+        });
+      },
+      getUser() {
 
-        if (user) {
-          // User is signed in.
-          // router.go({ path: '/stores' });
-          console.log(user.uid);
-        } else {
-          // No user is signed in.
-        }
       },
     },
     ready: {
