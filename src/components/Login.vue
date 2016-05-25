@@ -40,6 +40,14 @@
           console.log(errorMessage);
           console.log(errorCode);
         });
+
+        const user = firebaseApp.firebaseAuth.currentUser;
+
+        if (user) {
+          // User is signed in.
+        } else {
+          // No user is signed in.
+        }
       },
     },
     ready: {

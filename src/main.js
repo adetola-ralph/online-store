@@ -5,13 +5,16 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Stores from './components/Stores';
 
-import VueRouter from 'vue-router';
+// import VueRouter from 'vue-router';
+import VueRouter from './router/index';
 import VueResource from 'vue-resource';
 
 Vue.use(VueResource);
-Vue.use(VueRouter);
+// Vue.use(VueRouter);
 
-const router = new VueRouter();
+const router = VueRouter.router;
+
+// const router = new VueRouter();
 
 router.map({
   '/home': {
