@@ -22,13 +22,13 @@
           <label for="password">Confirm Password</label>
           <input type="password" class="form-control" id="confirm_password_field" placeholder="Confirm Password">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" v-on:click="register">Submit</button>
       </form>
     </div>
   </div>
 </template>
-<script>
 
+<script>
 export default{
 };
 </script>

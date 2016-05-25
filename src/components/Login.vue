@@ -4,15 +4,30 @@
       <form>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email_field" placeholder="Email Address">
+          <input type="email" class="form-control" id="email_field" placeholder="Email Address" v-model="email_address">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password_field" placeholder="Password">
+          <input type="password" class="form-control" id="password_field" placeholder="Password" v-model="password">
         </div>
         <p class="hidden text-center">Wrong Details, please enter a correct email or password</p>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" v-on:click="login">Submit</button>
       </form>
     </div>
   </div>
 </template>
+
+<script>
+  export default{
+    data() {
+      return {
+        email_address: '',
+        password: '',
+      };
+    },
+    methods: {
+      login() {
+      },
+    },
+  };
+</script>
