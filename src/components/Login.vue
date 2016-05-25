@@ -10,6 +10,7 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password_field" placeholder="Password">
         </div>
+        <p class="hidden text-center">Wrong Details, please enter a correct email or password</p>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
     </div>
