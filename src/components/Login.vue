@@ -11,7 +11,7 @@
           <input type="password" class="form-control" id="password_field" placeholder="Password" v-model="password">
         </div>
         <p class="hidden text-center">Wrong Details, please enter a correct email or password</p>
-        <button type="submit" class="btn btn-default" v-on:click="login">Submit</button>
+        <button type="submit" class="btn btn-default" v-on:click.stop.prevent="login">Submit</button>
       </form>
     </div>
   </div>
@@ -30,12 +30,15 @@
     },
     methods: {
       login() {
-        firebaseApp.firebaseAuth.signInWithEmailAndPassword(this.email_address, this.password).catch(function(error) {
+        firebaseApp.
+        firebaseAuth.
+        signInWithEmailAndPassword(this.email_address, this.password).catch((error) => {
           // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
+          const errorCode = error.code;
+          const errorMessage = error.message;
 
-          alert(errorCode+" "+errorMessage);
+          console.log(errorMessage);
+          console.log(errorCode);
         });
       },
     },

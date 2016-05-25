@@ -4,25 +4,25 @@
       <form>
         <div class="form-group">
           <label for="firstname">FirstName:</label>
-          <input type="text" class="form-control" id="firstname" placeholder="First Name">
+          <input type="text" class="form-control" id="firstname" placeholder="First Name" v-model="firstname">
         </div>
         <div class="form-group">
           <label for="lastname">LastName:</label>
-          <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+          <input type="text" class="form-control" id="lastname" placeholder="Last Name" v-model="lastname">
         </div>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email_field" placeholder="Email Address">
+          <input type="email" class="form-control" id="email_field" placeholder="Email Address" v-model="email_address">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password_field" placeholder="Password">
+          <input type="password" class="form-control" id="password_field" placeholder="Password" v-model="password">
         </div>
         <div class="form-group">
           <label for="password">Confirm Password</label>
-          <input type="password" class="form-control" id="confirm_password_field" placeholder="Confirm Password">
+          <input type="password" class="form-control" id="confirm_password_field" placeholder="Confirm Password" v-model="confirm_password">
         </div>
-        <button type="submit" class="btn btn-default" v-on:click="register">Submit</button>
+        <button type="submit" class="btn btn-default" v-on:click.stop.stop.prevent="register">Submit</button>
       </form>
     </div>
   </div>
@@ -37,17 +37,24 @@ export default{
     return {
       email_address: '',
       password: '',
+      firstname: '',
+      lastname: '',
+      confirm_password: '',
       authenticated: false,
     };
   },
   methods: {
     register() {
-      firebaseApp.firebaseAuth.createUserWithEmailAndPassword(this.email_address, this.password).catch(function(error) {
+      console.log(this.email_address);
+      firebaseApp.
+      firebaseAuth.
+      createUserWithEmailAndPassword(this.email_address, this.password).catch((error) => {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        const errorCode = error.code;
+        const errorMessage = error.message;
 
-        alert(errorCode+" "+errorMessage);
+        console.log(errorMessage);
+        console.log(errorCode);
       });
     },
   },
