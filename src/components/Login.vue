@@ -10,7 +10,7 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password_field" placeholder="Password" v-model="password">
         </div>
-        <p class="hidden text-center">Wrong Details, please enter a correct email or password</p>
+        <p class="text-center">{{error_message}}</p>
         <button type="submit" class="btn btn-default" v-on:click.stop.prevent="login">Submit</button>
       </form>
     </div>
@@ -19,9 +19,9 @@
 
 <script>
   import firebaseApp from '../firebase';
-  // import VueRouter from '../router/index';
+  import VueRouter from '../router/index';
 
-  // const router = VueRouter.router;
+  const router = VueRouter.router;
 
   export default{
     data() {
@@ -29,6 +29,7 @@
         email_address: '',
         password: '',
         authenticated: false,
+        error_message: '',
       };
     },
     methods: {
@@ -37,20 +38,26 @@
         firebaseAuth.
         signInWithEmailAndPassword(this.email_address, this.password).catch((error) => {
           // Handle Errors here.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-
-          console.log(errorMessage);
-          console.log(errorCode);
+          this.errorMessage(error.message);
         }).then((user) => {
-          console.log(user.uid);
+          // console.log(user.uid);
           this.getUser(user.uid);
         });
       },
       getUser(uid) {
         firebaseApp.firebaseDB.ref(`/users/${uid}`).once('value').then((snapshot) => {
-          console.log(snapshot.val());
+          // console.log(snapshot.val());
+          this.authenticated = true;
+          window.localstorage.set('online_store_uid', uid);
+          window.localstorage.set('online_store_user_authenticated', true);
+          window.localstorage.set('online_store_user_name', snapshot.val().name.split(' ')[0]);
+          window.localstorage.set('online_store_user_email', snapshot.val().email);
+
+          router.go({ path: '/stores' });
         });
+      },
+      errorMessage(errorMessage) {
+        this.error_message = errorMessage;
       },
     },
     ready: {
