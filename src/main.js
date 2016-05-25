@@ -3,6 +3,7 @@ import App from './App';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
+import Stores from './components/Stores';
 
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
@@ -21,6 +22,9 @@ router.map({
   },
   '/register': {
     component: Register,
+  },
+  '/stores': {
+    component: Stores,
   },
 });
 
