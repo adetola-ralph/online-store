@@ -7,7 +7,9 @@ var config = {
 };
 firebase.initializeApp(config);
 var firebaseDB = firebase.database();
+var firebaseAuth = firebase.auth();
 
 export default {
   firebaseDB:firebaseDB,
+  firebaseAuth:firebaseAuth,
 }
