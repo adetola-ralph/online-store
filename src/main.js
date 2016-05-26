@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Shops from './components/Shops';
+import Shop from './components/Shop';
 
 // import VueRouter from 'vue-router';
 import VueRouter from './router/index';
@@ -28,6 +29,9 @@ router.map({
   },
   '/shops': {
     component: Shops,
+  },
+  '/shop/:shopid': {
+    component: Shop,
   },
 });
 

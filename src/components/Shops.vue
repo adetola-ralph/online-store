@@ -2,14 +2,18 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="row text-center">
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3>Register!</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
+        <div class="col-md-3 col-sm-6 hero-feature" v-for="shop in shops">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{shop.shop_name}}</h3>
             </div>
+            <div class="panel-body">
+              {{shop.shop_name}}
+              <p>
+                  <a v-link="'/shop'" class="btn btn-success">Visit the shop</a>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
