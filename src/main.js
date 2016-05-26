@@ -38,7 +38,7 @@ router.map({
   '/createshop': {
     component: CreateShop,
   },
-  '/createproduct': {
+  '/createproduct/:shopid': {
     component: CreateProduct,
   },
 });

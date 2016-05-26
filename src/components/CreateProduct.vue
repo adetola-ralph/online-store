@@ -10,7 +10,7 @@
           <label for="productdescription">Product Description</label>
           <textarea class="form-control" rows="3" id="productdescription" v-model="productDescription"></textarea>
         </div>
-        <button type="submit" class="btn btn-success" v-on:click.stop.stop.prevent="createProduct">Submit</button>
+        <button type="submit" class="btn btn-success" v-on:click.stop.prevent="createProduct">Submit</button>
       </form>
       <p class="text-centre">{{errorMessage}}</p>
     </div>
@@ -32,7 +32,7 @@ export default {
       errorMessage: '',
     };
   },
-  method: {
+  methods: {
     checkAuth() {
       const authCondition = localStorage.getItem('online_store_user_authenticated');
       // alert(localStorage.getItem('online_store_user_authenticated'));
@@ -41,7 +41,7 @@ export default {
       }
     },
     createProduct() {
-      if (this.produtName.length > 0 && this.productDescription.length > 0) {
+      if (this.productName.length > 0 && this.productDescription.length > 0) {
         const payload = {
           product_name: this.productName,
           product_description: this.productDescription,
@@ -51,6 +51,11 @@ export default {
         console.log(productId);
         console.log(payload);
         firebaseApp.firebaseDB.ref(`/products/${productId}`).set(payload);
+
+        const storePayload = {};
+        storePayload[productId] = true;
+        firebaseApp.firebaseDB.ref(`/stores/${this.sid}/products/`).update(storePayload);
+        router.go({ path: `/shop/${this.sid}` });
       } else {
         this.errorMessage = 'Please enter a name and a description!!!';
       }
@@ -58,6 +63,11 @@ export default {
   },
   ready() {
     this.checkAuth();
+  },
+  route: {
+    data(transition) {
+      this.sid = transition.to.params.shopid;
+    },
   },
 };
 </script>

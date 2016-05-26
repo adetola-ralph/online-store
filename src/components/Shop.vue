@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-if="authenticated" type="button" class="btn btn-danger btn-circle btn-lg" id="addButton" v-link="'/createproduct'">
+    <button v-if="authenticated" type="button" class="btn btn-danger btn-circle btn-lg" id="addButton" v-link="`/createproduct/${id}`">
       <i class="fa fa-plus"></i>
     </button>
     <header class="jumbotron hero-spacer">
