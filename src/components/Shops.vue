@@ -39,19 +39,20 @@ export default{
     },
   },
   ready() {
-    const firebaseDB = firebaseApp.firebaseDB;
+    // const firebaseDB = firebaseApp.firebaseDB;
     console.log(this.checkAuth());
     if (this.checkAuth() === false) {
-      const storeRef = firebaseDB.ref('/stores');
-      storeRef.on('child_added', (data) => {
+      // const storeRef = firebaseDB.ref('/stores');
+      firebaseApp.firebaseDB.ref('/stores').on('child_added', (data) => {
         console.log(data.val());
-        // this.stores.push(data);
+        // this.shops.push(data.val());
       });
       storeRef.on('child_changed', (data) => {
         console.log(data.val());
       });
     } else {
       // get the shops that belongs to the user
+      console.log('logged in');
     }
   },
 };
