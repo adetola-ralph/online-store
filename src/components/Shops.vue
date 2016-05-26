@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import firebaseApp from '../firebase';
 
 export default{
   data() {
@@ -29,14 +30,29 @@ export default{
       const authCondition = localStorage.getItem('online_store_user_authenticated');
 
       if (authCondition !== null && authCondition) {
-        // get all the stores available
-      } else {
-        // get uid and get stores for the user
+        return true;
       }
+      return false;
     },
     getShops() {
 
     },
+  },
+  ready() {
+    const firebaseDB = firebaseApp.firebaseDB;
+    console.log(this.checkAuth());
+    if (this.checkAuth() === false) {
+      const storeRef = firebaseDB.ref('/stores');
+      storeRef.on('child_added', (data) => {
+        console.log(data.val());
+        // this.stores.push(data);
+      });
+      storeRef.on('child_changed', (data) => {
+        console.log(data.val());
+      });
+    } else {
+      // get the shops that belongs to the user
+    }
   },
 };
 </script>
