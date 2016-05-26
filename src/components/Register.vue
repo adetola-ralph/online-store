@@ -22,6 +22,7 @@
           <label for="password">Confirm Password</label>
           <input type="password" class="form-control" id="confirm_password_field" placeholder="Confirm Password" v-model="confirm_password">
         </div>
+        <p class="text-center">{{error_message}}</p>
         <button type="submit" class="btn btn-default" v-on:click.stop.stop.prevent="register">Submit</button>
       </form>
     </div>
@@ -41,6 +42,7 @@ export default{
       lastname: '',
       confirm_password: '',
       authenticated: false,
+      error_message: '',
     };
   },
   methods: {
@@ -51,18 +53,17 @@ export default{
       firebaseAuth.
       createUserWithEmailAndPassword(this.email_address, this.password).catch((error) => {
         // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        console.log(errorCode);
+        this.errorMessage(error.message);
       }).then((user) => {
         console.log(user.uid);
         this.addUser(payload, user.uid);
       });
     },
     addUser(payload, uid) {
-      // console.log(`/users/${uid}`);
       firebaseApp.firebaseDB.ref(`/users/${uid}`).set(payload);
+    },
+    errorMessage(errorMessage) {
+      this.error_message = errorMessage;
     },
   },
   ready: {

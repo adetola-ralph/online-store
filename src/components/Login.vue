@@ -48,10 +48,10 @@
         firebaseApp.firebaseDB.ref(`/users/${uid}`).once('value').then((snapshot) => {
           // console.log(snapshot.val());
           this.authenticated = true;
-          window.localstorage.set('online_store_uid', uid);
-          window.localstorage.set('online_store_user_authenticated', true);
-          window.localstorage.set('online_store_user_name', snapshot.val().name.split(' ')[0]);
-          window.localstorage.set('online_store_user_email', snapshot.val().email);
+          window.localStorage.setItem('online_store_uid', uid);
+          window.localStorage.setItem('online_store_user_authenticated', true);
+          window.localStorage.setItem('online_store_user_name', snapshot.val().name.split(' ')[0]);
+          window.localStorage.setItem('online_store_user_email', snapshot.val().email);
 
           router.go({ path: '/stores' });
         });

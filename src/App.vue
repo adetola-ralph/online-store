@@ -19,11 +19,14 @@
                     <li>
                         <a v-link="'/stores'">Stores</a>
                     </li>
-                    <li>
+                    <li v-if="this.getAuthenticate===true">
+                      <a>Welcome {{user_name}}</a>
+                    </li>
+                    <li v-if="this.getAuthenticate===false">
                         <a v-link="'/login'">Login</a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-right">
+                <form class="navbar-form navbar-right" v-if="this.getAuthenticate===false">
                   <div class="form-group">
                     <button v-link="'/register'" class="btn btn-success">Register</a>
                   </div>
@@ -56,5 +59,27 @@
 
 <script>
 export default{
+  computed: {
+    getAuthenticate() {
+      const authCondition = localStorage.getItem('online_store_user_authenticated');
+
+      if (authCondition !== null && authCondition) {
+        return true;
+      }
+      return false;
+    },
+  },
+  data() {
+    return {
+      // authenticated: this.getAuthenticate,
+      user_id: '',
+      user_name: '',
+      user_email: '',
+    };
+  },
+  methods: {
+  },
+  ready() {
+  },
 };
 </script>
