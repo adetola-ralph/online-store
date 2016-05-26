@@ -16,14 +16,17 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a v-link="'/stores'">Stores</a>
-                    </li>
                     <li v-if="this.getAuthenticate===true">
                       <a>Welcome {{user_name}}</a>
                     </li>
+                    <li>
+                        <a v-link="'/stores'">Stores</a>
+                    </li>
                     <li v-if="this.getAuthenticate===false">
                         <a v-link="'/login'">Login</a>
+                    </li>
+                    <li v-if="this.getAuthenticate===true">
+                      <a class="btn btn-clear" v-on:click="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right" v-if="this.getAuthenticate===false">
@@ -58,6 +61,8 @@
 </template>
 
 <script>
+import firebaseApp from './firebase';
+
 export default{
   computed: {
     getAuthenticate() {
@@ -72,12 +77,24 @@ export default{
   data() {
     return {
       // authenticated: this.getAuthenticate,
-      user_id: '',
-      user_name: '',
-      user_email: '',
+      user_id: localStorage.getItem('online_store_uid'),
+      user_name: localStorage.getItem('online_store_user_name'),
+      user_email: localStorage.getItem('online_store_user_email'),
     };
   },
   methods: {
+    logout() {
+      firebaseApp.firebaseAuth.signOut().then(() => {
+        alert('You have been Logged out');
+        localStorage.removeItem('online_store_uid');
+        localStorage.removeItem('online_store_user_authenticated');
+        localStorage.removeItem('online_store_user_name');
+        localStorage.removeItem('online_store_user_email');
+        console.log(firebaseApp.firebaseAuth.currentUser.uid);
+      }, (error) => {
+        console.log(error.message);
+      });
+    },
   },
   ready() {
   },
