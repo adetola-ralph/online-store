@@ -52,7 +52,7 @@
           window.localStorage.setItem('online_store_user_authenticated', true);
           window.localStorage.setItem('online_store_user_name', snapshot.val().name.split(' ')[0]);
           window.localStorage.setItem('online_store_user_email', snapshot.val().email);
-
+          location.reload();
           router.go({ path: '/shops' });
         });
       },

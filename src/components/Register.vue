@@ -71,7 +71,7 @@ export default{
       window.localStorage.setItem('online_store_user_authenticated', true);
       window.localStorage.setItem('online_store_user_name', payload.name.split(' ')[0]);
       window.localStorage.setItem('online_store_user_email', payload.email);
-
+      location.reload();
       router.go({ path: '/shops' });
     },
     errorMessage(errorMessage) {

@@ -90,6 +90,7 @@ export default{
         localStorage.removeItem('online_store_user_authenticated');
         localStorage.removeItem('online_store_user_name');
         localStorage.removeItem('online_store_user_email');
+        location.reload();
         console.log(firebaseApp.firebaseAuth.currentUser.uid);
       }, (error) => {
         console.log(error.message);
