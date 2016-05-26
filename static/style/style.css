@@ -49,7 +49,7 @@ footer {
   border-radius: 25px;
 }
 
-#addStore {
+#addButton {
   position:absolute !important;
   bottom: 80px !important;
   right: 20px !important;

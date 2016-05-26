@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <button  type="button" class="btn btn-danger btn-circle btn-lg" id="addStore" v-link="'/createshop'">
+    <button v-if="authenticated" type="button" class="btn btn-danger btn-circle btn-lg" id="addButton" v-link="'/createshop'">
       <i class="fa fa-pencil-square-o"></i>
     </button>
     <h2 >
@@ -35,6 +35,7 @@ export default{
       shops: [],
       shopId: [],
       noAvailableStores: false,
+      authenticated: false,
     };
   },
   methods: {
@@ -42,6 +43,7 @@ export default{
       const authCondition = localStorage.getItem('online_store_user_authenticated');
 
       if (authCondition !== null && authCondition) {
+        this.authenticated = true;
         return true;
       }
       return false;
