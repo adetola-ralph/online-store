@@ -1,5 +1,8 @@
 <template>
   <div class="row">
+    <h2 >
+      <p class="text-centre" v-if="noAvailableStores">You do not have any stores please create one</p>
+    </h2>
     <div class="col-sm-12">
       <div class="row text-center">
         <div class="col-md-3 col-sm-6 hero-feature" v-for="shop in shops">
@@ -8,7 +11,7 @@
               <h3 class="panel-title">{{shop.shop_name}}</h3>
             </div>
             <div class="panel-body">
-              {{shop.shop_name}}
+              {{shop.shop_description}}
               <p>
                   <a v-link="`/shop/${shop.shop_id}`" class="btn btn-success">Visit the shop</a>
               </p>
@@ -27,6 +30,8 @@ export default{
   data() {
     return {
       shops: [],
+      shopId: [],
+      noAvailableStores: false,
     };
   },
   methods: {
@@ -66,8 +71,37 @@ export default{
         console.log(data.val());
       });
     } else {
-      // get the shops that belongs to the user
       console.log('logged in');
+      const userid = localStorage.getItem('online_store_uid');
+      console.log(userid);
+      firebaseApp.firebaseDB.ref(`/users/${userid}`)
+      .once('value')
+      .then((snapshot) => {
+        console.log(snapshot.val().stores);
+        if (snapshot.val().stores !== null && typeof snapshot.val().stores !== 'undefined') {
+          for (const key in snapshot.val().stores) {
+            if (snapshot.val().stores.hasOwnProperty(key)) {
+              this.shopId.push(key);
+            }
+          }
+        } else if (snapshot.val().stores === null || typeof snapshot.val().stores === 'undefined') {
+          this.noAvailableStores = true;
+        }
+
+        this.shopId.forEach((element) => {
+          firebaseApp.firebaseDB
+          .ref(`/stores/${element}`)
+          .once('value').then((snapshot2) => {
+            const stores = snapshot2.val();
+            const shopValue = {
+              shop_id: element,
+              shop_name: stores.store_name,
+              shop_description: stores.store_description,
+            };
+            this.shops.push(shopValue);
+          });
+        });
+      });
     }
   },
 };
