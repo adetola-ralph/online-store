@@ -1,6 +1,5 @@
 <template>
   <div>
-    the id is {{id}}
     <header class="jumbotron hero-spacer">
         <h2>Welcome to {{storeName}}</h2>
         <p>by {{storeOwner}}</p>
