@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <button  type="button" class="btn btn-danger btn-circle btn-lg" id="addStore">
+    <button  type="button" class="btn btn-danger btn-circle btn-lg" id="addStore" v-link="'/createshop'">
       <i class="fa fa-pencil-square-o"></i>
     </button>
     <h2 >

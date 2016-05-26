@@ -53,6 +53,7 @@ footer {
   position:absolute !important;
   bottom: 80px !important;
   right: 20px !important;
+  z-index:999;
 }
 
 /**not necessary**/
