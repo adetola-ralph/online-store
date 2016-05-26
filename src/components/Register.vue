@@ -72,7 +72,7 @@ export default{
       window.localStorage.setItem('online_store_user_name', payload.name.split(' ')[0]);
       window.localStorage.setItem('online_store_user_email', payload.email);
 
-      router.go({ path: '/stores' });
+      router.go({ path: '/shops' });
     },
     errorMessage(errorMessage) {
       this.error_message = errorMessage;
@@ -81,7 +81,7 @@ export default{
       const authCondition = localStorage.getItem('online_store_user_authenticated');
 
       if (authCondition !== null && authCondition) {
-        router.go({ path: '/stores' });
+        router.go({ path: '/shops' });
       }
     },
   },

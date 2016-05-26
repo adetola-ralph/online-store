@@ -53,7 +53,7 @@
           window.localStorage.setItem('online_store_user_name', snapshot.val().name.split(' ')[0]);
           window.localStorage.setItem('online_store_user_email', snapshot.val().email);
 
-          router.go({ path: '/stores' });
+          router.go({ path: '/shops' });
         });
       },
       errorMessage(errorMessage) {
@@ -63,7 +63,7 @@
         const authCondition = localStorage.getItem('online_store_user_authenticated');
 
         if (authCondition !== null && authCondition) {
-          router.go({ path: '/stores' });
+          router.go({ path: '/shops' });
         }
       },
     },

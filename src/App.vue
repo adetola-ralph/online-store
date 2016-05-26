@@ -20,7 +20,7 @@
                       <a>Welcome {{user_name}}</a>
                     </li>
                     <li>
-                        <a v-link="'/stores'">Stores</a>
+                        <a v-link="'/shops'">Shops</a>
                     </li>
                     <li v-if="this.getAuthenticate===false">
                         <a v-link="'/login'">Login</a>
