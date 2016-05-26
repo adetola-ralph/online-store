@@ -47,7 +47,7 @@ export default{
         console.log(data.val());
         // this.shops.push(data.val());
       });
-      storeRef.on('child_changed', (data) => {
+      firebaseApp.firebaseDB.ref('/stores').on('child_changed', (data) => {
         console.log(data.val());
       });
     } else {
