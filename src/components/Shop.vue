@@ -1,8 +1,11 @@
 <template>
   <div>
+    <button v-if="authenticated" type="button" class="btn btn-danger btn-circle btn-lg" id="addButton" v-link="'/createproduct'">
+      <i class="fa fa-plus"></i>
+    </button>
     <header class="jumbotron hero-spacer">
         <h2>Welcome to {{storeName}}</h2>
-        <p>by {{storeOwner}}</p>
+        <p>{{storeOwner}}</p>
         <p>{{storeDescription}} </p>
     </header>
     <div class="row">
@@ -40,6 +43,7 @@ export default {
       storeDescription: '',
       productsId: [],
       productsDetails: [],
+      authenticated: false,
     };
   },
   route: {
@@ -79,6 +83,20 @@ export default {
         });
       });
     },
+  },
+  methods: {
+    checkAuth() {
+      const authCondition = localStorage.getItem('online_store_user_authenticated');
+
+      if (authCondition !== null && authCondition) {
+        this.authenticated = true;
+        return true;
+      }
+      return false;
+    },
+  },
+  ready() {
+    this.checkAuth();
   },
 };
 </script>

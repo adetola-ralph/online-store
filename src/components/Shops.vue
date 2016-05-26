@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <button v-if="authenticated" type="button" class="btn btn-danger btn-circle btn-lg" id="addButton" v-link="'/createshop'">
-      <i class="fa fa-pencil-square-o"></i>
+      <i class="fa fa-plus"></i>
     </button>
     <h2 >
       <p class="text-centre" v-if="noAvailableStores">You do not have any stores please create one</p>
