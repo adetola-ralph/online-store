@@ -10,7 +10,7 @@
     </header>
     <div class="row">
       <div class="col-sm-12">
-        <div class="row text-center">
+        <div class="row text-center flex-box">
           <div class="col-md-3 col-sm-6 hero-feature" v-for="product in productsDetails">
             <div class="panel panel-default">
               <div class="panel-heading">

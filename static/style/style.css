@@ -56,6 +56,12 @@ footer {
   z-index:999;
 }
 
+.flex-box{
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-around
+}
+
 /**not necessary**/
 
 .navbar-toggle .icon-bar {

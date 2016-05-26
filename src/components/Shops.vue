@@ -7,7 +7,7 @@
       <p class="text-centre" v-if="noAvailableStores">You do not have any stores please create one</p>
     </h2>
     <div class="col-sm-12">
-      <div class="row text-center">
+      <div class="row text-center flex-box">
         <div class="col-md-3 col-sm-6 hero-feature" v-for="shop in shops">
           <div class="panel panel-default">
             <div class="panel-heading">
