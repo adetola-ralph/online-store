@@ -51,18 +51,22 @@ export default{
   methods: {
     register() {
       // console.log(this.email_address);
-      const payload = { name: this.fullname, email: this.email_address };
-      firebaseApp.
-      firebaseAuth.
-      createUserWithEmailAndPassword(this.email_address, this.password).catch((error) => {
-        // Handle Errors here.
-        this.errorMessage(error.message);
-      }).then((user) => {
-        console.log(user.uid);
-        if (user !== null && typeof user !== 'undefined') {
-          this.addUser(payload, user.uid);
-        }
-      });
+      if (this.password === this.confirm_password) {
+        const payload = { name: this.fullname, email: this.email_address };
+        firebaseApp.
+        firebaseAuth.
+        createUserWithEmailAndPassword(this.email_address, this.password).catch((error) => {
+          // Handle Errors here.
+          this.errorMessage(error.message);
+        }).then((user) => {
+          console.log(user.uid);
+          if (user !== null && typeof user !== 'undefined') {
+            this.addUser(payload, user.uid);
+          }
+        });
+      } else {
+        this.error_message = 'Please enter the same password';
+      }
     },
     addUser(payload, uid) {
       firebaseApp.firebaseDB.ref(`/users/${uid}`).set(payload);
