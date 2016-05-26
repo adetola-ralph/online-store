@@ -21,7 +21,7 @@
 export default{
   data() {
     return {
-      stores: {},
+      shops: {},
     };
   },
   methods: {
@@ -34,7 +34,7 @@ export default{
         // get uid and get stores for the user
       }
     },
-    getStores() {
+    getShops() {
 
     },
   },
