@@ -32,6 +32,9 @@
 <script>
 
 import firebaseApp from '../firebase';
+import VueRouter from '../router/index';
+
+const router = VueRouter.router;
 
 export default{
   data() {
@@ -56,17 +59,34 @@ export default{
         this.errorMessage(error.message);
       }).then((user) => {
         console.log(user.uid);
-        this.addUser(payload, user.uid);
+        if (user !== null && typeof user !== 'undefined') {
+          this.addUser(payload, user.uid);
+        }
       });
     },
     addUser(payload, uid) {
       firebaseApp.firebaseDB.ref(`/users/${uid}`).set(payload);
+      this.authenticated = true;
+      window.localStorage.setItem('online_store_uid', uid);
+      window.localStorage.setItem('online_store_user_authenticated', true);
+      window.localStorage.setItem('online_store_user_name', payload.name.split(' ')[0]);
+      window.localStorage.setItem('online_store_user_email', payload.email);
+
+      router.go({ path: '/stores' });
     },
     errorMessage(errorMessage) {
       this.error_message = errorMessage;
     },
+    checkAuth() {
+      const authCondition = localStorage.getItem('online_store_user_authenticated');
+
+      if (authCondition !== null && authCondition) {
+        router.go({ path: '/stores' });
+      }
+    },
   },
-  ready: {
+  ready() {
+    this.checkAuth();
   },
   computed: {
     fullname() {

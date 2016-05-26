@@ -59,8 +59,18 @@
       errorMessage(errorMessage) {
         this.error_message = errorMessage;
       },
+      checkAuth() {
+        const authCondition = localStorage.getItem('online_store_user_authenticated');
+
+        if (authCondition !== null && authCondition) {
+          router.go({ path: '/stores' });
+        }
+      },
     },
-    ready: {
+    ready() {
+      this.checkAuth();
+    },
+    computed: {
     },
   };
 </script>
