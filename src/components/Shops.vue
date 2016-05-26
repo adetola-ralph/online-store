@@ -1,5 +1,8 @@
 <template>
   <div class="row">
+    <button  type="button" class="btn btn-danger btn-circle btn-lg" id="addStore">
+      <i class="fa fa-pencil-square-o"></i>
+    </button>
     <h2 >
       <p class="text-centre" v-if="noAvailableStores">You do not have any stores please create one</p>
     </h2>
