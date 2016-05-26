@@ -22,7 +22,7 @@ import firebaseApp from '../firebase';
 export default{
   data() {
     return {
-      shops: {},
+      shops: [],
     };
   },
   methods: {
@@ -34,18 +34,29 @@ export default{
       }
       return false;
     },
-    getShops() {
-
-    },
   },
   ready() {
-    // const firebaseDB = firebaseApp.firebaseDB;
     console.log(this.checkAuth());
     if (this.checkAuth() === false) {
-      // const storeRef = firebaseDB.ref('/stores');
       firebaseApp.firebaseDB.ref('/stores').on('child_added', (data) => {
         console.log(data.val());
-        // this.shops.push(data.val());
+        const uid = data.val().created_by;
+
+        const storeId = data.key;
+        const storeName = data.val().store_name;
+        const storeDescription = data.val().store_description;
+
+        const shopValue = {
+          shop_id: storeId,
+          shop_name: storeName,
+          shop_description: storeDescription,
+        };
+
+        firebaseApp.firebaseDB.ref(`/users/${uid}`).once('value').then((snapshot) => {
+          const userName = snapshot.val().name;
+          shopValue.createdBy = userName;
+          this.shops.push(shopValue);
+        });
       });
       firebaseApp.firebaseDB.ref('/stores').on('child_changed', (data) => {
         console.log(data.val());
