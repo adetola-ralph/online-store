@@ -38,15 +38,19 @@
     },
     methods: {
       login() {
-        firebaseApp.
-        firebaseAuth.
-        signInWithEmailAndPassword(this.email_address, this.password).catch((error) => {
-          // Handle Errors here.
-          this.errorMessage(error.message);
-        }).then((user) => {
-          // console.log(user.uid);
-          this.getUser(user.uid);
-        });
+        if (this.email_address.length > 0 && this.password.length > 0) {
+          firebaseApp.
+          firebaseAuth.
+          signInWithEmailAndPassword(this.email_address, this.password).catch((error) => {
+            // Handle Errors here.
+            this.errorMessage(error.message);
+          }).then((user) => {
+            // console.log(user.uid);
+            this.getUser(user.uid);
+          });
+        } else {
+          this.error_message = 'You have empty fields';
+        }
       },
       getUser(uid) {
         firebaseApp.firebaseDB.ref(`/users/${uid}`).once('value').then((snapshot) => {
