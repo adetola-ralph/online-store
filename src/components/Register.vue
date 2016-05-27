@@ -55,21 +55,28 @@ export default{
   methods: {
     register() {
       // console.log(this.email_address);
-      if (this.password === this.confirm_password) {
-        const payload = { name: this.fullname, email: this.email_address };
-        firebaseApp.
-        firebaseAuth.
-        createUserWithEmailAndPassword(this.email_address, this.password).catch((error) => {
-          // Handle Errors here.
-          this.errorMessage(error.message);
-        }).then((user) => {
-          console.log(user.uid);
-          if (user !== null && typeof user !== 'undefined') {
-            this.addUser(payload, user.uid);
-          }
-        });
+      if (this.firstname.length > 0 &&
+          this.lastname.length &&
+          this.password.length > 0 &&
+          this.confirm_password > 0 && this.email_address.length > 0) {
+        if (this.password === this.confirm_password) {
+          const payload = { name: this.fullname, email: this.email_address };
+          firebaseApp.
+          firebaseAuth.
+          createUserWithEmailAndPassword(this.email_address, this.password).catch((error) => {
+            // Handle Errors here.
+            this.errorMessage(error.message);
+          }).then((user) => {
+            console.log(user.uid);
+            if (user !== null && typeof user !== 'undefined') {
+              this.addUser(payload, user.uid);
+            }
+          });
+        } else {
+          this.error_message = 'Please enter the same password';
+        }
       } else {
-        this.error_message = 'Please enter the same password';
+        this.error_message = 'You have an empty field';
       }
     },
     addUser(payload, uid) {
