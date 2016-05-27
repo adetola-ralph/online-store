@@ -1,17 +1,21 @@
 <template>
   <div class="row">
     <div class="col-sm-6 col-sm-push-3 col-xs-12">
-      <form>
-        <div class="form-group">
-          <label for="productname">Product Name</label>
-          <input type="text" class="form-control" id="productname" placeholder="Product Name" v-model="productName">
+      <div class="panel">
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <label for="productname">Product Name</label>
+              <input type="text" class="form-control" id="productname" placeholder="Product Name" v-model="productName">
+            </div>
+            <div class="form-group">
+              <label for="productdescription">Product Description</label>
+              <textarea class="form-control" rows="3" id="productdescription" v-model="productDescription"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" v-on:click.stop.prevent="createProduct">Submit</button>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="productdescription">Product Description</label>
-          <textarea class="form-control" rows="3" id="productdescription" v-model="productDescription"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" v-on:click.stop.prevent="createProduct">Submit</button>
-      </form>
+      </div>
       <p class="text-centre text-danger">{{errorMessage}}</p>
     </div>
   </div>
