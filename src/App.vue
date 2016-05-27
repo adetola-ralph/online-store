@@ -16,7 +16,7 @@
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li v-if="this.getAuthenticate===true">
-                      <p class="navbar-text">Welcome {{user_name}}</p>
+                      <p class="navbar-text"><em>Welcome {{user_name}}</em></p>
                     </li>
                     <li>
                         <a v-link="'/shops'">Shops</a>
@@ -49,7 +49,7 @@
         <div class="container">
           <div class="row">
               <div class="col-lg-12">
-                  <p class="text-center">Copyright &copy; Oreofeoluwapo Olutola</p>
+                  <p class="lead text-center">Copyright &copy; Oreofeoluwapo Olutola</p>
               </div>
           </div>
         </div>

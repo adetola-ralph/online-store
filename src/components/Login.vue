@@ -1,18 +1,22 @@
 <template>
   <div class="row">
     <div class="col-sm-6 col-sm-push-3 col-xs-12">
-      <form>
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email_field" placeholder="Email Address" v-model="email_address">
+      <div class="panel">
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email_field" placeholder="Email Address" v-model="email_address">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password_field" placeholder="Password" v-model="password">
+            </div>
+            <p class="text-center text-danger"><strong>{{error_message}}</strong></p>
+            <button type="submit" class="btn btn-primary" v-on:click.stop.prevent="login">Submit</button>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password_field" placeholder="Password" v-model="password">
-        </div>
-        <p class="text-center text-danger"><strong>{{error_message}}</strong></p>
-        <button type="submit" class="btn btn-primary" v-on:click.stop.prevent="login">Submit</button>
-      </form>
+      </div>
     </div>
   </div>
 </template>
