@@ -10,7 +10,7 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password_field" placeholder="Password" v-model="password">
         </div>
-        <p class="text-center text-danger">{{error_message}}</p>
+        <p class="text-center text-danger"><strong>{{error_message}}</strong></p>
         <button type="submit" class="btn btn-primary" v-on:click.stop.prevent="login">Submit</button>
       </form>
     </div>

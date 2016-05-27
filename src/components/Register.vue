@@ -22,7 +22,7 @@
           <label for="password">Confirm Password</label>
           <input type="password" class="form-control" id="confirm_password_field" placeholder="Confirm Password" v-model="confirm_password">
         </div>
-        <p class="text-center text-danger">{{error_message}}</p>
+        <p class="text-center text-danger"><strong>{{error_message}}</strong></p>
         <button type="submit" class="btn btn-primary" v-on:click.stop.stop.prevent="register">Submit</button>
       </form>
     </div>

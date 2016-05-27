@@ -15,8 +15,10 @@
             </div>
             <div class="panel-body">
               {{shop.shop_description}}
+            </div>
+            <div class="panel-footer">
               <p>
-                  <a v-link="`/shop/${shop.shop_id}`" class="btn btn-success">Visit the shop</a>
+                  <a v-link="`/shop/${shop.shop_id}`" class="btn btn-clear">Visit the shop</a>
               </p>
             </div>
           </div>
