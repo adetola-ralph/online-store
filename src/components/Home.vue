@@ -2,7 +2,7 @@
 <header id="home-jumbotron" class="jumbotron hero-spacer">
     <h2>Start your shop online Today!</h2>
     <p>Ever though starting your own shop online was hard </p>
-    <p>It's completely free </p>
+    <p>It shouldn't be </p>
     <p><a v-link="'/register'" class="btn btn-primary btn-xlg">Get Started </a>
     </p>
 </header>
