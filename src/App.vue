@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -10,13 +10,13 @@
                     <span class="icon-bar middle-bar"></span>
                     <span class="icon-bar bottom-bar"></span>
                 </button>
-                <a class="navbar-brand" v-link="'/home'">Oreofe.me</a>
+                <a class="navbar-brand" v-link="'/home'">Online mall</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li v-if="this.getAuthenticate===true">
-                      <a>Welcome {{user_name}}</a>
+                      <p class="navbar-text">Welcome {{user_name}}</p>
                     </li>
                     <li>
                         <a v-link="'/shops'">Shops</a>
@@ -24,15 +24,13 @@
                     <li v-if="this.getAuthenticate===false">
                         <a v-link="'/login'">Login</a>
                     </li>
+                    <li v-if="this.getAuthenticate===false">
+                        <button class="btn btn-primary navbar-btn" v-link="'/register'">Register</button>
+                    </li>
                     <li v-if="this.getAuthenticate===true">
-                      <a class="btn btn-clear" v-on:click="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                      <button type="button" class="btn btn-warning navbar-btn" v-on:click="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-right" v-if="this.getAuthenticate===false">
-                  <div class="form-group">
-                    <button v-link="'/register'" class="btn btn-success">Register</a>
-                  </div>
-                </form>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -49,11 +47,11 @@
     <!--<hr>-->
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
+          <div class="row">
+              <div class="col-lg-12">
+                  <p class="text-center">Copyright &copy; Oreofeoluwapo Olutola</p>
+              </div>
+          </div>
         </div>
     </footer>
   </div>

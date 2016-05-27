@@ -10,9 +10,9 @@
           <label for="shopdescription">Shop Description</label>
           <textarea class="form-control" rows="3" id="shopname" v-model="shopDescription"></textarea>
         </div>
-        <button type="submit" class="btn btn-success" v-on:click.stop.stop.prevent="createShop">Submit</button>
+        <button type="submit" class="btn btn-primary" v-on:click.stop.stop.prevent="createShop">Submit</button>
       </form>
-      <p class="text-centre">{{errorMessage}}</p>
+      <p class="text-centre text-danger">{{errorMessage}}</p>
     </div>
   </div>
 </template>
