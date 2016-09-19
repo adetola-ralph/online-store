@@ -1,6 +1,7 @@
 # online_store
 
 > Andela bootcamp final project
+> Online store sample
 
 ## Build Setup
 
